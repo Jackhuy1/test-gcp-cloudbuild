@@ -10,7 +10,7 @@ steps:
   args: ['push', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA']
 images: ['asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA']
 
-- name: "gcr.io/cloud-builders/gke-deploy"
+- name: 'gcr.io/cloud-builders/gke-deploy'
   id: Deploy docker image to GKE
   args:
   - run
