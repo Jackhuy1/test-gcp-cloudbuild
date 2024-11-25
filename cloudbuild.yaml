@@ -2,7 +2,11 @@ options:
   logging: CLOUD_LOGGING_ONLY
 steps:
 - name: 'gcr.io/cloud-builders/docker'
+  env:
+  - 'TAG_NAME=$(git rev-parse --short HEAD)'
   args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$TAG_NAME', '.']
 - name: 'gcr.io/cloud-builders/docker'
+  env:
+  - 'TAG_NAME=$(git rev-parse --short HEAD)'
   args: ['push', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$TAG_NAME']
 images: ['asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$TAG_NAME']
