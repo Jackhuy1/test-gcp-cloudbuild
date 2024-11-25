@@ -1,5 +1,5 @@
 <?php
-$conn=mysqli_connect("34.143.247.201","root","Tdc@12345","bansach");
+$conn=mysqli_connect("34.124.128.170","root","Tdc@12345","bansach");
 // Check connection
 if ($conn->connect_error)
   {
