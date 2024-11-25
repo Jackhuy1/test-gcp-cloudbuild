@@ -1,0 +1,6 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach']
+images: ['asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach']
