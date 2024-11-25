@@ -3,7 +3,7 @@
 	<header class="container">
 		<div class="row">
 			<div class="col-md-4" style="margin-bottom:25px">
-				<div id="logo"><h5>NHÀ SÁCH ONLINE</h5></div>
+				<div id="logo"><h5>NHÀ SÁCH ONLINE 2</h5></div>
 			</div>
 			<div class="col-md-4">
 				<form class="form-search" method="GET" action="timkiem.php">  
