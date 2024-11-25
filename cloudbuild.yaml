@@ -1,8 +1,17 @@
-options:
-  logging: CLOUD_LOGGING_ONLY
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA']
-images: ['asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA']
+  args: ['push', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach']
+images: ['asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach']
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Deploy to GKE
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+         PROJECT=$$(gcloud config get-value core/project)
+         gke-gcloud-auth-plugin --version
+         export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+         gcloud container clusters get-credentials "my-autopilot-cluster"" --region "asia-southeast1" --project $PROJECT
+         kubectl apply -f deployment.yaml
