@@ -13,7 +13,7 @@ spec:
         app: bansach
     spec:
       containers:
-        - image: asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach
+        - image: asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA
           name: bansach
           ports:
           - containerPort: 80

@@ -1,9 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach', '.']
+  args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach']
-images: ['asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach']
+  args: ['push', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA']
+  images: ['asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$$COMMIT_SHA']
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Deploy to GKE
   entrypoint: 'bash'
