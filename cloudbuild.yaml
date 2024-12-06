@@ -3,18 +3,18 @@ options:
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   id: Build docker image
-  args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-registry/bansach:$COMMIT_SHA', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
   id: Push docker image to repository
-  args: ['push', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA']
+  args: ['push', 'asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-registry/bansach:$COMMIT_SHA']
 
 - name: 'gcr.io/cloud-builders/gke-deploy'
   id: Deploy docker image to GKE
   args:
   - run
   - --filename=deployment.yaml
-  - --image=asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-repo/bansach:$COMMIT_SHA
+  - --image=asia-southeast1-docker.pkg.dev/ultra-glyph-442600-d1/my-docker-registry/bansach:$COMMIT_SHA
   - --location=asia-southeast1
   - --cluster=my-autopilot-cluster
 
